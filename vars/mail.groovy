@@ -16,7 +16,7 @@ def call(state, stage) {
                 """
     if  (state != 'SUCCESS') {
         body = body + """
-            <p><b>Failed on stage</b>: $current_stage</p>
+            <p><b>Failed on stage</b>: $stage</p>
             <h2>Last lines of output:</h2>
             <pre>$log</pre>
         """
