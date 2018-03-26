@@ -1,5 +1,5 @@
 
-def mail(state, stage) {
+def call(state, stage) {
     def causes = currentBuild.rawBuild.getCauses()
     def cause = null
     if (!causes.isEmpty()) {
