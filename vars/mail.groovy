@@ -11,7 +11,7 @@ def call(state, stage) {
                     <p>Build $env.BUILD_NUMBER ran on $env.NODE_NAME and ended with $currentBuild.result .
                     </p>
                     <p><b>Build trigger</b>: $cause</p>
-                    <p><b> Check response code</b>: $response </p>
+                    <p><b> Check response code</b>: response </p>
                     <p>See: <a href="$env.BUILD_URL">$env.BUILD_URL</a></p>
                 """
     if  (state != 'SUCCESS') {
