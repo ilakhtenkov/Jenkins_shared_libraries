@@ -11,7 +11,7 @@ def call (groupId, repositoryId, nexusServer, credId) {
             null,
             null
     );
-    def credential = creds.find {it.id == credId}
+    def credential = creds.find {it.id == credId
     def http = new HTTPBuilder ( nexusServer )
     http.headers[ 'Authorization' ] = "Basic " + "${credential.username}:${credential.password}".getBytes('iso-8859-1').encodeBase64()
     http.request( GET, TEXT ) {
