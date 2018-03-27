@@ -1,5 +1,5 @@
 
-def call(state, stage = null) {
+def call(state, recipients = null , stage = null) {
     def causes = currentBuild.rawBuild.getCauses()
     def cause = null
     if (!causes.isEmpty()) {
@@ -20,19 +20,21 @@ def call(state, stage = null) {
             <pre>$log</pre>
         """
     }
-
+    if (recipients) {
+        recipients = emailextrecipients([[$class: 'UpstreamComitterRecipientProvider'],
+                                         [$class: 'FailingTestSuspectsRecipientProvider'],
+                                         [$class: 'FirstFailingBuildSuspectsRecipientProvider'],
+                                         [$class: 'CulpritsRecipientProvider'],
+                                         [$class: 'DevelopersRecipientProvider'],
+                                         [$class: 'RequesterRecipientProvider']])
+    }
     emailext attachLog: true, body: body ,
             compressLog: true,
             mimeType: 'text/html',
             //subject: "$env.JOB_NAME $env.BUILD_NUMBER: $currentBuild.result",
             subject: "${JOB_NAME.split( '/' )[-1]} - Release # $currentBuild.displayName : $currentBuild.result",
 
-            to: emailextrecipients([[$class: 'UpstreamComitterRecipientProvider'],
-                                    [$class: 'FailingTestSuspectsRecipientProvider'],
-                                    [$class: 'FirstFailingBuildSuspectsRecipientProvider'],
-                                    [$class: 'CulpritsRecipientProvider'],
-                                    [$class: 'DevelopersRecipientProvider'],
-                                    [$class: 'RequesterRecipientProvider']])
+            to: recipients
 }
 
 
