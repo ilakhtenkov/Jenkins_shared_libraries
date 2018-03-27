@@ -20,7 +20,7 @@ def call(state, recipients = null , stage = null) {
             <pre>$log</pre>
         """
     }
-    if (recipients) {
+    if (!recipients) {
         recipients = emailextrecipients([[$class: 'UpstreamComitterRecipientProvider'],
                                          [$class: 'FailingTestSuspectsRecipientProvider'],
                                          [$class: 'FirstFailingBuildSuspectsRecipientProvider'],
