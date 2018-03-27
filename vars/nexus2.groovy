@@ -21,5 +21,9 @@ def call (groupId, repositoryId, nexusServer, credId) {
             def indexBrowserTreeViewResponse = new XmlParser().parseText(reader.text)
             return indexBrowserTreeViewResponse.data.children.indexBrowserTreeNode.children.indexBrowserTreeNode.'version'*.text().sort().reverse()
         }
+        response.failure = { resp ->
+            return 'Response status='+resp.status
+        }
     }
+
 }
