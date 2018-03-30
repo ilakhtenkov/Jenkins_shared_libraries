@@ -1,5 +1,5 @@
 
-def call(state, recipients = null , stage = null) {
+def call(state, recipients = null , stage = null, extra_body=null) {
     def causes = currentBuild.rawBuild.getCauses()
     def cause = null
     if (!causes.isEmpty()) {
@@ -13,12 +13,31 @@ def call(state, recipients = null , stage = null) {
                     <p><b>Build trigger</b>: $cause</p>
                     <p>Check console output at: <a href="$env.BUILD_URL">$env.BUILD_URL</a></p>
                 """
-    if  (state != 'SUCCESS') {
-        body = body + """
+    if (extra_body) {
+        body += extra_body
+    }
+    /*if  (state != 'SUCCESS') {
+        body += """
             <p><b>Failed on stage</b>: $stage</p>
             <h2>Last lines of output:</h2>
             <pre>$log</pre>
         """
+    }*/
+    switch (state) {
+        case 'FAILURE':
+            body += """
+            <p><b>Failed on stage</b>: $stage</p>
+            <h2>Last lines of output:</h2>
+            <pre>$log</pre>
+            """
+            break
+        case 'UNSTABLE':
+            body += """
+            <p><b>Unstable on stage</b>: $stage</p>
+            """
+            break
+        default:
+            break
     }
     if (!recipients) {
         recipients = emailextrecipients([[$class: 'UpstreamComitterRecipientProvider'],
