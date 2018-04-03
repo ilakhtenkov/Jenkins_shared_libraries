@@ -1,5 +1,5 @@
 
-def call(state, recipients = null , stage = null, extra_body=null) {
+def call(state, recipients = null , stage = null, extra_body = null) {
     def causes = currentBuild.rawBuild.getCauses()
     def cause = null
     if (!causes.isEmpty()) {
