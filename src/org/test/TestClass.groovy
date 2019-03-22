@@ -8,7 +8,7 @@ class TestClass implements Serializable {
     }
 
     public def testMethod() {
-        col = ["rest", "/api/", null, "project/raw"]
+        def col = ["rest", "/api/", null, "project/raw"]
         return col.findAll().collect {
             it.replaseAll("^/|/\$","")
         }.join("/")
