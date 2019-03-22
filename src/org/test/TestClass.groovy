@@ -6,7 +6,7 @@ class TestClass implements Serializable {
         this.pipelineSteps = pipelineSteps
     }
 
-    public static def getLog() {
-        return currentBuild.rawBuild.getLog()
+    public def testMethod{
+        
     }
 }
