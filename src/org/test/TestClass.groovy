@@ -11,6 +11,7 @@ class TestClass implements Serializable {
     public def testMethod(String item, String id, String property) {
         def url = join(item, id, property)
         url += "/test_part"
+        pipelineSteps.log.info "I'm here"
         return url
     }
 
