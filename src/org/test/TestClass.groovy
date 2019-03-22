@@ -7,7 +7,14 @@ class TestClass implements Serializable {
         this.pipelineSteps = pipelineSteps
     }
 
-    public def testMethod(...args) {
+
+    public def testMethod(String item, String id, String property) {
+        def url = join(item, id, property)
+        url += "/test_part"
+        return url
+    }
+
+    private def join(...args) {
         //def col = ["rest", "/api/", null, "project/raw"]
         return args.findAll().collect {
             it.replaceAll("^/|/\$","")
