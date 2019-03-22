@@ -7,9 +7,9 @@ class TestClass implements Serializable {
         this.pipelineSteps = pipelineSteps
     }
 
-    public def testMethod() {
-        def col = ["rest", "/api/", null, "project/raw"]
-        return col.findAll().collect {
+    public def testMethod(...args) {
+        //def col = ["rest", "/api/", null, "project/raw"]
+        return args.findAll().collect {
             it.replaceAll("^/|/\$","")
         }.join("/")
     }
