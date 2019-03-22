@@ -8,6 +8,10 @@ class TestClass implements Serializable {
     }
 
     public def testMethod() {
-        return TEST_STRING
+        col = ["rest", "/api/", null, "project/raw"]
+        col.findAll().collect {
+          it.replaseAll("^/|/\$","")
+        }.join("/")
+        return col
     }
 }
