@@ -10,7 +10,7 @@ class TestClass implements Serializable {
     public def testMethod() {
         def col = ["rest", "/api/", null, "project/raw"]
         return col.findAll().collect {
-            it.replaseAll("^/|/\$","")
+            it.replaceAll("^/|/\$","")
         }.join("/")
     }
 }
