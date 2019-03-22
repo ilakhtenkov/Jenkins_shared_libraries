@@ -6,7 +6,7 @@ class TestClass implements Serializable {
         this.pipelineSteps = pipelineSteps
     }
 
-    public def testMethod{
+    public def testMethod() {
         
     }
 }
