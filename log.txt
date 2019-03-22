@@ -1,0 +1,4 @@
+Print log messages.
+Available methods:
+ - info (String message) - Prints info message
+ - error (String message) - Prints error message
