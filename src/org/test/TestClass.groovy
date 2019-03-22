@@ -1,3 +1,5 @@
+package org.test
+
 class TestClass implements Serializable {
 
     private pipelineSteps
