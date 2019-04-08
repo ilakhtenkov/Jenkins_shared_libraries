@@ -1,4 +1,27 @@
-Print log messages.
-Available methods:
- - info (String message) - Prints info message
- - error (String message) - Prints error message
+# Print log messages.
+## Available methods:
+<ul>
+<li>info<br>
+Print out log message with INFO: prefix
+<ul>
+<li>Parameters:
+<ul>
+<li>message (String, mandatory): Message to display</li>
+</ul>
+</li>
+<li>Return:
+<ul>
+<li>None</li>
+</ul>
+</li>
+</ul>
+
+
+- First item
+- Second item
+- Third item
+- Fourth item 
+
+
+
+
